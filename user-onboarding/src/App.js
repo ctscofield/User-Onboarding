@@ -29,16 +29,6 @@ export default function App() {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled); 
 
-  const getForms = () => {
-    axios
-      .get("https://reqres.in/api/users")
-      .then((res) => {
-        setForms(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   const postNewForm = (newForm) => {
     axios
@@ -83,10 +73,7 @@ export default function App() {
     postNewForm(newForm);
   };
 
-  useEffect(() => {
-    getForms();
-  }, []);
-
+  
   useEffect(() => {
     schema.isValid(formValues).then((valid) => {
       setDisabled(!valid);
