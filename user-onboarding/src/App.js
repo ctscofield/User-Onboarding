@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import schema from "./formSchema";
 import * as yup from "yup";
+import styled from "styled-components"
 
 
 const initialFormValues = {
@@ -22,6 +23,9 @@ const initialFormErrors = {
 const initialSignee = [];
 const initialDisabled = true;
 
+const Wrap = styled.pre`
+  white-space: pre-wrap;
+`;
 
 export default function App() {
   const [forms, setForms] = useState(initialSignee);
@@ -35,6 +39,7 @@ export default function App() {
       .post("https://reqres.in/api/users", newForm)
       .then((res) => {
         setForms([res.data, ...forms]);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -93,6 +98,9 @@ export default function App() {
         disabled={disabled}
         errors={formErrors}
       />
+      <Wrap> 
+        {JSON.stringify(forms)}
+      </Wrap>
     </div>
   );
 }
