@@ -18,21 +18,20 @@ function Form(props) {
             <div className="form submit">
                 <h2>Permission to come aboard Captain?</h2>
                 <div className="errors">
-                    <div>{errors.name}</div>
+                    <div>{errors.username}</div>
                     <div>{errors.email}</div>
                     <div>{errors.password}</div>
-                    <div>{errors.checkbox}</div>
+                    <div>{errors.terms}</div>
                 </div>
-                <button disabled={disabled}>submit</button>
             </div>
 
             <div className="form-inputs">
                 <label>
-                    Name;
+                    Name
                     <input
-                    value={values.name}
+                    value={values.username}
                     onChange={onChange}
-                    name="name"
+                    name="username"
                     type="text"
                     />
                 </label>
@@ -51,7 +50,7 @@ function Form(props) {
                     Password
                     <input 
                     value={values.password}
-                    onCHange={onChange}
+                    onChange={onChange}
                     name="password"
                     type="text"
                     />
@@ -59,13 +58,14 @@ function Form(props) {
 
                 <label>
                     Terms of Service Agreement
-                    <input 
+                    <input
                     type="checkbox"
-                    name="terms of service"
+                    name="terms"
                     checked={values.terms}
                     onChange={onChange}
                     />
                 </label>
+                <button disabled={disabled}>submit</button>
             </div>
         </form>
     )
